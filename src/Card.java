@@ -4,14 +4,10 @@ public class Card {
         HEART, DIAMOND, CLUB, SPADE;
     }
 
-    private enum Rank {
-        _1, _2, _3, _4, _5, _6, _7, _8, _9, _10, _11, _12, _13;
-    }
-
     private Suit suit;
-    private Rank rank;
+    private int rank;
     
-    public Card(Suit suit, Rank rank) {
+    public Card(Suit suit, int rank) {
         this.suit = suit;
         this.rank = rank;
     }
@@ -20,7 +16,7 @@ public class Card {
         return this.suit;
     }
 
-    public Rank getRank() {
+    public int getRank() {
         return this.rank;
     }
 
