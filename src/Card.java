@@ -1,9 +1,21 @@
+import enums.*;
+
 public class Card {
 
-    private String suit;
-    private String faceValue;
+    private Suit suit;
+    private int rank;
     
-    public static void main(String[] args) {
-        
+    public Card(Suit suit, int rank) {
+        this.suit = suit;
+        this.rank = rank;
     }
+
+    public Suit getSuit() {
+        return this.suit;
+    }
+
+    public int getRank() {
+        return this.rank;
+    }
+
 }
