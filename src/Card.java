@@ -1,8 +1,6 @@
-public class Card {
+import enums.*;
 
-    private enum Suit {
-        HEART, DIAMOND, CLUB, SPADE;
-    }
+public class Card {
 
     private Suit suit;
     private int rank;
