@@ -16,6 +16,7 @@ public class Main {
         
         AcesUpEngine gameEngine = new AcesUpEngine();
         
+        gameEngine.playGame();
         
         System.out.println("PROGRAM EXITING.");
         userInput.nextLine();

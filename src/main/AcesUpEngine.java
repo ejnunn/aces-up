@@ -1,5 +1,7 @@
 import java.util.Scanner;
 
+import enums.Suit;
+
 public class AcesUpEngine {
     Scanner scanner;
     Board gameBoard;
@@ -36,6 +38,7 @@ public class AcesUpEngine {
             currentPlayerAction = scanner.next();
         }
         catch (Exception e) {
+            currentPlayerAction = "ERROR Cannoot get player action.";
             System.err.println(e);
         }
         
