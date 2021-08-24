@@ -37,18 +37,36 @@ public class Board {
         return maxSize;
     }
 
-    public void displayBoard() {
+    @Override
+    public String toString() {
+        String result = "";
+
+        String prefix = "";
+        for (int i = 0; i < maxStackSize; i++) {
+            result += prefix;
+            result += rowToString(i);
+            prefix = "\n";
+        }
         
+        return result;
+    }
+
+    private String rowToString(int rowIndex) {
+        String rowString = "";
         for (int i = 0; i < NUMBER_OF_STACKS; i++) {
             Stack<Card> currentStack = this.boardStacks.get(i);
             Card currentCard = null;
-            if (!currentStack.isEmpty()) {
-                currentCard = currentStack.peek();
+            if (!currentStack.isEmpty() && currentStack.size() > rowIndex) {
+                currentCard = currentStack.get(rowIndex);
             }
             if (currentCard != null) {
-                System.out.print(currentCard.toString());
+                rowString += String.format("%10s", currentCard.toString());
+            } else {
+                rowString += String.format("%10s", "");
             }
+            rowString += " "; // formatting between Cards
         }
+        return rowString;
     }
 
 }

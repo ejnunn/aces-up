@@ -34,6 +34,7 @@ public class AcesUpEngine {
         try {
             System.out.print(">>> ");
             currentPlayerAction = getActionFromMenu();
+            System.out.println(currentPlayerAction);
         }
         catch (Exception e) {
             currentPlayerAction = "ERROR Cannoot get player action.";
@@ -48,12 +49,18 @@ public class AcesUpEngine {
         }
         else {
             System.out.println("ACTION FAILED.");
+
         }
         
 
         System.out.print("\033[H\033[2J"); // clears terminal screen
         
-        this.gameBoard.addCardToStack(new Card(Suit.CLUB, 7), 0);
+        this.gameBoard.addCardToStack(new Card(Suit.CLUB   , 7), 0);
+        this.gameBoard.addCardToStack(new Card(Suit.HEART  , 7), 1);
+        this.gameBoard.addCardToStack(new Card(Suit.SPADE  , 7), 2);
+        this.gameBoard.addCardToStack(new Card(Suit.DIAMOND, 7), 3);
+        this.gameBoard.addCardToStack(new Card(Suit.DIAMOND, 8), 3);
+        this.gameBoard.addCardToStack(new Card(Suit.DIAMOND, 9), 3);
 
         System.out.println(this.gameBoard.toString());
         
@@ -67,7 +74,7 @@ public class AcesUpEngine {
         String playerAction;
         String formattedAction;
 
-        playerAction = scanner.next();
+        playerAction = scanner.nextLine();
 
         formattedAction = parseAction(playerAction);
         return formattedAction;

@@ -19,6 +19,5 @@ public class Main {
         gameEngine.playGame();
         
         System.out.println("PROGRAM EXITING.");
-        userInput.nextLine();
     }
 }

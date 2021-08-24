@@ -20,7 +20,10 @@ public class Card {
 
     @Override
     public String toString() {
-        return "Test Card.toString()";
+        String result = "";
+        result += this.getSuit();
+        result += this.getRank();
+        return result;
     }
 
 }
