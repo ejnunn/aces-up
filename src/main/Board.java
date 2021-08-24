@@ -40,19 +40,36 @@ public class Board {
     @Override
     public String toString() {
         String result = "";
+        result = boardHeaderToString();
 
-        String prefix = "";
+        String prefix = "\n";
         for (int i = 0; i < maxStackSize; i++) {
             result += prefix;
             result += rowToString(i);
-            prefix = "\n";
         }
+
+        result += String.format("\n| %49s |", "").replace(" ", "-");
+
         
         return result;
     }
 
+    private String boardHeaderToString() {
+        String result = String.format("| %49s |\n", "").replace(" ", "-");
+        result += String.format("| %10s |", "STACK 1");
+        result += String.format("%11s |", "STACK 2");
+        result += String.format("%11s |", "STACK 3");
+        result += String.format("%11s |", "STACK 4");
+        result += "\n";
+        result += String.format("| %10s |", "").replace(" ", "-");
+        result += String.format("%11s |", "").replace(" ", "-");
+        result += String.format("%11s |", "").replace(" ", "-");
+        result += String.format("%11s |", "").replace(" ", "-");
+        return result;
+    }
+
     private String rowToString(int rowIndex) {
-        String rowString = "";
+        String rowString = "| ";
         for (int i = 0; i < NUMBER_OF_STACKS; i++) {
             Stack<Card> currentStack = this.boardStacks.get(i);
             Card currentCard = null;
@@ -60,9 +77,9 @@ public class Board {
                 currentCard = currentStack.get(rowIndex);
             }
             if (currentCard != null) {
-                rowString += String.format("%10s", currentCard.toString());
+                rowString += String.format("%10s |", currentCard.toString());
             } else {
-                rowString += String.format("%10s", "");
+                rowString += String.format("%10s |", "");
             }
             rowString += " "; // formatting between Cards
         }
