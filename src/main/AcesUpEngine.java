@@ -16,8 +16,6 @@ public class AcesUpEngine {
     private String getActionFromMenu() {
         String playerAction;
 
-        showMenu();
-
         playerAction = scanner.nextLine(); // process holds until user input is validated
 
         return playerAction;
@@ -29,14 +27,30 @@ public class AcesUpEngine {
         System.out.println("3. Quit.");
     }
 
-    public void startGame() {
-    
+    public void playGame() {
+        String currentPlayerAction;
+
         displayMenu();
 
-        String currentPlayerAction = getActionFromMenu();
+        try {
+            currentPlayerAction = scanner.next();
+        }
+        catch (Exception e) {
+            System.err.println(e);
+        }
+        
 
         if (currentPlayerAction == "Show Ruleset") {
             System.out.println("These are the rules.\n1. Four cards are dealt.\n2. Discard all cards that share a SUIT and have a smaller FACE VALUE.\n3. Continue dealing and discarding until the deck is empty.\n4. The game is won if only the four ACES are left on the board.");
+        }
+        else if (currentPlayerAction == "1") {
+            System.out.println("These are the rules.\n1. Four cards are dealt.\n2. Discard all cards that share a SUIT and have a smaller FACE VALUE.\n3. Continue dealing and discarding until the deck is empty.\n4. The game is won if only the four ACES are left on the board.");
+        }
+        else if (currentPlayerAction == null) {
+            System.out.println("NULL ACTION.");
+        }
+        else {
+            System.out.println("ACTION FAILED.");
         }
         
 
