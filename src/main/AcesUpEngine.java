@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 import enums.Suit;
@@ -5,23 +6,19 @@ import enums.Suit;
 public class AcesUpEngine {
     Scanner scanner;
     Board gameBoard;
+    ArrayList<String> menuItems;
     
     public AcesUpEngine() {
         scanner = new Scanner(System.in);
         gameBoard = new Board();
+        menuItems = new ArrayList<>();
+
+        menuItems.add("RULES");
+        
     }
 
-    /**
-     * Show the game menu and get a selection from the player.
-     * @return String playerAction - Index of action item from the menu list
-     */
-    private String getActionFromMenu() {
-        String playerAction;
+    
 
-        playerAction = scanner.nextLine(); // process holds until user input is validated
-
-        return playerAction;
-    }
 
     private void displayMenu() {
         System.out.println("1. Start new game.");
@@ -35,18 +32,15 @@ public class AcesUpEngine {
         displayMenu();
 
         try {
-            currentPlayerAction = scanner.next();
+            System.out.print(">>> ");
+            currentPlayerAction = getActionFromMenu();
         }
         catch (Exception e) {
             currentPlayerAction = "ERROR Cannoot get player action.";
             System.err.println(e);
         }
         
-
-        if (currentPlayerAction == "Show Ruleset") {
-            System.out.println("These are the rules.\n1. Four cards are dealt.\n2. Discard all cards that share a SUIT and have a smaller FACE VALUE.\n3. Continue dealing and discarding until the deck is empty.\n4. The game is won if only the four ACES are left on the board.");
-        }
-        else if (currentPlayerAction == "1") {
+        if (currentPlayerAction == "1" || currentPlayerAction == "RULES") {
             System.out.println("These are the rules.\n1. Four cards are dealt.\n2. Discard all cards that share a SUIT and have a smaller FACE VALUE.\n3. Continue dealing and discarding until the deck is empty.\n4. The game is won if only the four ACES are left on the board.");
         }
         else if (currentPlayerAction == null) {
@@ -64,6 +58,30 @@ public class AcesUpEngine {
         System.out.println(this.gameBoard.toString());
         
 }
+
+    /**
+     * Show the game menu and get a selection from the player.
+     * @return String playerAction - Index of action item from the menu list
+     */
+    private String getActionFromMenu() {
+        String playerAction;
+        String formattedAction;
+
+        playerAction = scanner.next();
+
+        formattedAction = parseAction(playerAction);
+        return formattedAction;
+    }
+
+    private String parseAction(String rawUserInput) {
+        String formattedAction = "";
+        for (int i = 0; i < menuItems.size(); i++) {
+            if (rawUserInput.trim().toUpperCase() == menuItems.get(i)) {
+                formattedAction = menuItems.get(i);
+            }
+        }
+        return formattedAction;
+    }
     
 
 
